@@ -17,7 +17,11 @@
 
 
 
+
+
 </style><script role="script" id="twine-user-script" type="text/twine-javascript">
+
+
 
 
 
@@ -46,14 +50,22 @@ You collected $lognum woods
 (set:$floatthing to (array: $knife,$campus))
 (set:$objectget to 0)
 (set:$objectnum to 0)
+(set:$playerlocation to (datamap:&quot;x&quot;,0,&quot;y&quot;,0))
+(set:$m1 to (datamap:&quot;x&quot;,5,&quot;y&quot;,5,&quot;atk&quot;,2))
+(set:$playerhp to 10)
 
 [[sail]]</tw-passagedata><tw-passagedata pid="5" name="sail" tags="" position="601,553" size="100,100">You sailing around, meanwhile you try to fish something useful.
+
+You are now at x:(print: $playerlocation&#39;s x) y:(print: $playerlocation&#39;s y)
 
 [[fish]]
 [[Explore]]
 [[Back to harbor]]
 
+(if:$playerlocation&#39;s x&gt;0)
+[(link:&quot;sail west&quot;)[(set: $playerlocation&#39;s x to $playerlocation&#39;s x-1)(goto:&quot;sail&quot;)]]
 
+(link:&quot;sail east&quot;)[(set: $playerlocation&#39;s x to $playerlocation&#39;s x+1)(goto:&quot;sail&quot;)]
 </tw-passagedata><tw-passagedata pid="6" name="fish" tags="" position="733,684" size="100,100">You hook something.
 (set: $fishthing to (random:1,2))
 
